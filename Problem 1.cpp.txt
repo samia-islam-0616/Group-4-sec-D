@@ -1,0 +1,58 @@
+#include <iostream>
+#include <cmath>
+#include <string>
+
+using namespace std;
+
+int main() {
+    double d, theta_m;
+    int m;
+
+
+    cout << "Enter the order : " << endl;
+    cin >> m;
+    cout << "Enter the spacing between the slits (d) in micrometers: " << endl;
+    cin >> d;
+    cout << "Enter the angle of the maximum (theta_m) in degrees: " << endl;
+    cin >> theta_m;
+
+
+    double theta_rad = theta_m * M_PI / 180.0;
+
+    double d_meters = d * 1e-6;
+
+    double lambda_meters = (d_meters * sin(theta_rad)) / m;
+
+
+    double lambda_nm = lambda_meters * 1e9;
+
+    cout << "Numeric value of the wavelength: " << (int)lambda_nm << " nm" << endl;
+
+
+    string color;
+    if (lambda_nm >= 380 && lambda_nm < 450) {
+        color = "Violet";
+    }
+    else if (lambda_nm >= 450 && lambda_nm < 495) {
+        color = "Blue";
+    }
+    else if (lambda_nm >= 495 && lambda_nm < 570) {
+        color = "Green";
+    }
+    else if (lambda_nm >= 570 && lambda_nm < 590) {
+        color = "Yellow";
+    }
+    else if (lambda_nm >= 590 && lambda_nm < 620) {
+        color = "Orange";
+    }
+    else if (lambda_nm >= 620 && lambda_nm <= 750) {
+        color = "Red";
+    }
+    else {
+        color = "Unknown";
+    }
+
+    cout << "Color of the light: " << color << endl;
+
+    return 0;
+}
